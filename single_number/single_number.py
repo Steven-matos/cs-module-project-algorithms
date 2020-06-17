@@ -2,10 +2,20 @@
 Input: a List of integers where every int except one shows up twice
 Returns: an integer
 '''
+
+
 def single_number(arr):
     # Your code here
-
-    pass
+    empt = []
+    if len(arr) == 0:
+        return False
+    else:
+        for num in arr:
+            if num in empt:
+                empt.remove(num)
+            else:
+                empt.append(num)
+    return empt[0]
 
 
 if __name__ == '__main__':
