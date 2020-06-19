@@ -6,20 +6,13 @@ Returns: a List of integers
 
 def sliding_window_max(nums, k):
     # Your code here
-    new_arr = []
-    start = 0
-    slide = k
-    for i in range(len(nums)):
-        high = float("-inf")
-        for j in range(start, slide):
-            if nums[j] > high:
-                high = nums[j]
-            if len(nums) < slide:
-                return new_arr
-        new_arr.append(high)
-        start += 1
-        slide += 1
-    return new_arr
+    maxArr = [0] * (len(nums)-k+1)    # create max array, length = nums-k+1
+    for i in range(len(nums)-k+1):
+        maxArr[i] = nums[i]           # set max array to nums[i] index
+        for j in range(i+1, i+k):     # look for bigger number in the rest of the window
+            if maxArr[i] < nums[j]:
+                maxArr[i] = nums[j]
+    return maxArr
 
 
 if __name__ == '__main__':
